@@ -1,0 +1,22 @@
+# Copy this file to worker/.dev.vars and paste your real URLs in.
+#
+# worker/.dev.vars is gitignored and never leaves your machine. It is read by
+# `wrangler dev` and by `node worker/check-contract.mjs`.
+#
+# These URLs ARE the credential. The sig= parameter at the end authenticates
+# every call, so treat the whole string like a password.
+
+FLOW_GET_URL=https://prod-00.westeurope.logic.azure.com/workflows/.../triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PASTE_HERE
+FLOW_REGISTER_URL=https://prod-00.westeurope.logic.azure.com/workflows/.../triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PASTE_HERE
+
+# Origins allowed to call the worker while developing.
+ALLOWED_ORIGINS=http://localhost:5173
+
+# Optional, only used by `check-contract.mjs worker` so you can omit the URL there.
+WORKER_URL=https://iwi7-registration-api.your-subdomain.workers.dev
+
+# Optional, the secret half of a Cloudflare Turnstile key pair.
+TURNSTILE_SECRET=
+
+# Days before a session that registration closes. Default 14.
+REGISTRATION_LEAD_DAYS=14

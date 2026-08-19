@@ -1,0 +1,22 @@
+name = "iwi7-registration-api"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Every origin that is allowed to call this worker. No trailing slash.
+# Add the TYPO3 page origin, because the iframe sends the iframe's own origin,
+# and the GitHub Pages origin, which is where the app is actually served from.
+ALLOWED_ORIGINS = "https://dosieber.github.io,https://iwi.unisg.ch"
+
+# Days before a session that registration closes. The frontend reads this from
+# the API and names it in the intro text, so it is the only place to change it.
+REGISTRATION_LEAD_DAYS = "14"
+
+# Optional. Restricts registrations to these email domains, subdomains included.
+# Leave empty or remove the line to accept any address.
+ALLOWED_EMAIL_DOMAINS = "unisg.ch,student.unisg.ch"
+
+# Secrets, never put in this file. Set them with:
+#   npx wrangler secret put FLOW_GET_URL
+#   npx wrangler secret put FLOW_REGISTER_URL
+#   npx wrangler secret put TURNSTILE_SECRET   (optional)
